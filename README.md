@@ -111,3 +111,48 @@ Snapshots:   0 total
 Time:        0.356 s
 Ran all test suites.
 ```
+
+
+## 🟥 Matchers in Jest 🟥
+* `.toBe()` is one example of a matcher, there are various other matchers!
+* `.toBe()` is for JavaScript PRIMITIVES (booleans, strings, numbers), not for objects like arrays:
+```js
+test('two plus two is four', ()=> {
+   expect(2+2).toBe([1,2,3]); // FAIL :(
+})
+```
+* The above fails with the following error:
+```
+expect(received).toBe(expected) // Object.is equality
+
+Expected: [1, 2, 3]
+Received: 4
+```
+
+* We have the `toEqual()` matcher for objects:
+```js
+test('objects need to use toEqual()', ()=> {
+   const object = {one:1, two:2};
+   expect(object).toEqual({one:1, two: 2}); // PASS
+})
+```
+* We can also evaluate if a value is falsy using the `toBeFalsy()` matcher:
+```js
+test('null is falsy', ()=> {
+   const nullVar = null;
+   expect(nullVar).toBeFalsy(); // PASS
+})
+```
+* If we tried to use `isEqual(false)` or `toBe(false)`, the test will fail⚠️⚠️⚠️
+* We also have `toBeTruthy()`:
+```js
+const one = 1;
+expect(one).toBeTruthy(); // PASS
+```
+* We also have a `toThrow()` matcher:
+```js
+const n = () => {
+   throw new Error()
+}
+expect(n).toThrow(); // PASS
+```
