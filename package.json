@@ -1,0 +1,12 @@
+{
+  "name": "learning-jest",
+  "version": "1.0.0",
+  "description": "* This repo was created for me to learn testing JavaScript.\r * I am using a FreeCodeCamp Tutorial: [https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/](/https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
