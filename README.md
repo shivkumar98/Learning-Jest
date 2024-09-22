@@ -1,8 +1,8 @@
-# Project Description
+# 🧠 Learning Jest 🧠
 * This repo was created for me to learn testing JavaScript.
 * I am using a FreeCodeCamp Tutorial: [https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/](/https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/)
 
-## Project Commentary
+## 🟥 Setting Up Project and Jest 🟥
 * I download Git onto to my computer so I can access the terminal
 * I open Git bash in the root of this project, an executed the following:
 ```sh
@@ -35,18 +35,79 @@ npm install --save-dev jest
 * I can see Jest has been added to `package.json`:
 ```json
 {
-  "name": "learning-jest",
-  "version": "1.0.0",
-  "description": "* This repo was created for me to learn testing JavaScript.\r * I am using a FreeCodeCamp Tutorial: [https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/](/https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/)",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "jest": "^29.7.0"
-  }
+   "name": "learning-jest",
+   "version": "1.0.0",
+   "description": "* This repo was created for me to learn testing JavaScript.\r * I am using a FreeCodeCamp Tutorial: [https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/](/https://www.freecodecamp.org/news/how-to-test-javascript-code-with-jest/)",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "devDependencies": {
+      "jest": "^29.7.0"
+   }
 }
+```
+* I change the `test` key of `scripts` to `jest`:
+```json:
+"scripts": {
+   "jest": "echo \"Error: no test specified\" && exit 1"
+}
+```
+
+## 🟥 Basic Concepts in Jest 🟥
+* I start with creating a simple unit test, I create `sum.js` and `sum.test.js` files.
+* The `sum.js` file is defined as:
+```js
+function sum(a,b) {
+   return a + b;
+}
+module.exports = sum;
+```
+* The last line is to allow other JS files to access the `sum()` function
+* In the `sum.test.js` file, I import the sum module using `require`:
+```js
+const sum = require('./sum');
+```
+* I create my first test by calling the `test()` function:
+```js
+test('adds 1 and 2 to equal 3', () => {
+   expect(sum(1,2)).toBe(3);
+})
+```
+* I now need to run the test, so I execute `npm test` but I get the following error:
+```sh
+npm test
+npm error Missing script: "test"
+npm error
+npm error Did you mean this?
+npm error   npm run jest # run the "jest" package script
+npm error
+npm error To see a list of scripts, run:
+npm error   npm run
+npm error A complete log of this run can be found in: C:\Users\shiv_\AppData\Local\npm-cache\_logs\2024-09-22T13_52_25_097Z-debug-0.log
+```
+* I fix this by updating the `package.json` to:
+```json
+"scripts": {
+   "test": "jest"
+},
+```
+* Now when I execute the test:
+```
+npm test
+
+> learning-jest@1.0.0 test
+> jest
+
+PASS ./sum.test.js
+  √ adds 1 and 2 to equal 3 (1 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.356 s
+Ran all test suites.
 ```
